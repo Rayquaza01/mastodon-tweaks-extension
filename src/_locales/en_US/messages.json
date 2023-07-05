@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Mastodon Tweaks",
+        "description": "Name of extension"
+    },
+    "extensionDescription": {
+        "message": "A collection of tweaks",
+        "description": "Description of extension"
+    }
+}
