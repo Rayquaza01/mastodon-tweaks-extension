@@ -6,5 +6,13 @@
     "extensionDescription": {
         "message": "A collection of tweaks",
         "description": "Description of extension"
+    },
+    "optionInstanceTitle": {
+        "message": "Instance Title",
+        "description": "Title for instance name option"
+    },
+    "optionInstanceDescription": {
+        "message": "The URL for your instance, for example https://mastodon.social",
+        "description": "Title for instance name option"
     }
 }
