@@ -1,7 +1,10 @@
 /**
  * Queries all images on the current page and, if it has alt text, adds an event listener to display a popup
+ * @param enabled Whether or not to add the events
  */
-export function AddAltTextEvent() {
+export function AddAltTextEvent(enabled: boolean): void {
+    if (!enabled) return;
+
     // get all media galleries on page
     const galleries = [...document.querySelectorAll(".media-gallery:not([data-mastodon-tweaks-processed])")] as HTMLDivElement[];
     galleries.forEach(gallery => {

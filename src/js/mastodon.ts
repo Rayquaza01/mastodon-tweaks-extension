@@ -26,7 +26,7 @@ function start() {
 function feedChangeObserver(): void {
     if (!ready) return;
 
-    if (options.addAltTextPopup) AddAltTextEvent();
+    AddAltTextEvent(options.addAltTextPopup);
     ApplyHashtagColors(options, trendingTags, followedTags);
 }
 
