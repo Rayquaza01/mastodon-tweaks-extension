@@ -9,7 +9,8 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 module.exports = {
     entry: {
         background: __dirname + "/src/js/background.ts",
-        options: __dirname + "/src/js/options.ts"
+        options: __dirname + "/src/js/options.ts",
+        mastodon: __dirname + "/src/js/mastodon.ts"
     },
     devtool: "source-map",
     output: {
