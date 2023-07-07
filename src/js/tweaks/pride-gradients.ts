@@ -6,7 +6,7 @@ export const gradients = {
     bi: "linear-gradient(to right, #D70071, #9C4E97, #0035AA)",
     pan: "linear-gradient(to right, #FF1B8D, #FFD900, #1BB3FF)",
     ace: "linear-gradient(to right, #000, #a4a4a4, #810081)",
-    aro: "linear-gradient(to right, #3aa63f, #a8d47a, #aaa, #000);",
+    aro: "linear-gradient(to right, #3aa63f, #a8d47a, #aaa, #000)",
     aroace: "linear-gradient(to right, #E38D00, #EDCE00, #FFFFFF, #62B0DD, #1A3555)",
     lesbian: "linear-gradient(to right, #d62900, #ff9b55, #d461a6, #a50062)",
     gay: "linear-gradient(to right, #26ceaa, #f1efff, #5049cc)",
