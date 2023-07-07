@@ -51,16 +51,20 @@ export function Form() {
                 Highlight currently trending hashtags
             </label><br />
             <label>
+                Update Interval (hours)
+                <input type="number" min="0" step="1" value={options.trendingUpdateInterval} onChange={e => setOptions({ trendingUpdateInterval: parseInt(e.currentTarget.value) }) } placeholder="Udate Interval" />
+            </label><br />
+            <label>
                 Highlighting mode
                 <Select value={options.trendingHighlightMode} options={HighlightModeOptions} onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
             </label><br />
             <label>
                 Highlight color
-                <input type="text" value={options.trendingColor} onChange={e => setOptions({ trendingColor: e.currentTarget.value })} />
+                <input type="text" value={options.trendingColor} onChange={e => setOptions({ trendingColor: e.currentTarget.value })} placeholder="Color" />
             </label><br />
             <label>
                 Highlight background
-                <input type="text" value={options.trendingBackground} onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} />
+                <input type="text" value={options.trendingBackground} onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} placeholder="Background" />
             </label><br />
             <div>
                 Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_TRENDING }) }>Refresh</button> <button onClick={() => setTrendingVisible(!trendingVisible)}>{trendingVisible ? "Hide" : "Show"}</button> <br />
@@ -78,11 +82,11 @@ export function Form() {
             </label><br />
             <label>
                 Highlight color
-                <input type="text" value={options.followedColor} onChange={e => setOptions({ followedColor: e.currentTarget.value })} />
+                <input type="text" value={options.followedColor} onChange={e => setOptions({ followedColor: e.currentTarget.value })} placeholder="Color" />
             </label><br />
             <label>
                 Highlight background
-                <input type="text" value={options.followedBackground} onChange={e => setOptions({ followedBackground: e.currentTarget.value })} />
+                <input type="text" value={options.followedBackground} onChange={e => setOptions({ followedBackground: e.currentTarget.value })} placeholder="Background" />
             </label><br />
             <div>
                 Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>Refresh</button> <button onClick={() => setFollowedVisible(!followedVisible)}>{followedVisible ? "Hide" : "Show"}</button> <br />

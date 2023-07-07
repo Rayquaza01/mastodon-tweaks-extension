@@ -19,7 +19,6 @@ export interface Options {
     followedColor: string
     followedBackground: string
     followedHighlightMode: HashtagHighlightMode
-    followedUpdateInterval: number
     coloredTrendingHashtags: boolean
     trendingColor: string
     trendingBackground: string
@@ -37,7 +36,6 @@ export const defaultOptions: Options = {
     followedColor: "lightgreen",
     followedBackground: "linear-gradient(45deg, #1fda6a, #16ebe9)",
     followedHighlightMode: HashtagHighlightMode.COLOR,
-    followedUpdateInterval: 7,
     coloredTrendingHashtags: false,
     trendingColor: "violet",
     trendingBackground: "linear-gradient(45deg, #FF61CE, #7C5CFF)",
