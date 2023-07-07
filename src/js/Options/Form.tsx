@@ -56,6 +56,49 @@ export function Form() {
             </label>
 
             <h3>Hashtag Highlighting</h3>
+            <h4>Followed Hashtags</h4>
+            <label>
+                <input
+                    type="checkbox"
+                    checked={options.coloredFollowedHashtags}
+                    onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
+                Highlight followed hashtags (needs access key)<br />
+            </label>
+            <label>
+                Highlighting mode
+                <Select
+                    value={options.followedHighlightMode}
+                    options={HighlightModeOptions}
+                    onChange={e => setOptions({ followedHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+            </label><br />
+            <label>
+                Highlight color
+                <input
+                    type="text"
+                    value={options.followedColor}
+                    onChange={e => setOptions({ followedColor: e.currentTarget.value })} placeholder="Color" />
+            </label><br />
+            <label>
+                Highlight background
+                <input
+                    type="text"
+                    value={options.followedBackground}
+                    onChange={e => setOptions({ followedBackground: e.currentTarget.value })} placeholder="Background" />
+            </label><br />
+            <div>
+                Followed Hashtags
+                <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>
+                    Refresh
+                </button>
+                <button onClick={() => setFollowedVisible(!followedVisible)}>
+                    {followedVisible ? "Hide" : "Show"}
+                </button> <br />
+                <HashtagList
+                    hashtags={cacheFollowed}
+                    mode={options.followedHighlightMode}
+                    color={options.followedColor} background={options.followedColor} visible={followedVisible} />
+            </div>
+
             <h4>Trending Hashtags</h4>
             <label>
                 <input
@@ -112,49 +155,6 @@ export function Form() {
                     color={options.trendingColor}
                     background={options.trendingBackground}
                     visible={trendingVisible} />
-            </div>
-
-            <h4>Followed Hashtags</h4>
-            <label>
-                <input
-                    type="checkbox"
-                    checked={options.coloredFollowedHashtags}
-                    onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
-                Highlight followed hashtags (needs access key)<br />
-            </label>
-            <label>
-                Highlighting mode
-                <Select
-                    value={options.followedHighlightMode}
-                    options={HighlightModeOptions}
-                    onChange={e => setOptions({ followedHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
-            </label><br />
-            <label>
-                Highlight color
-                <input
-                    type="text"
-                    value={options.followedColor}
-                    onChange={e => setOptions({ followedColor: e.currentTarget.value })} placeholder="Color" />
-            </label><br />
-            <label>
-                Highlight background
-                <input
-                    type="text"
-                    value={options.followedBackground}
-                    onChange={e => setOptions({ followedBackground: e.currentTarget.value })} placeholder="Background" />
-            </label><br />
-            <div>
-                Followed Hashtags
-                <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>
-                    Refresh
-                </button>
-                <button onClick={() => setFollowedVisible(!followedVisible)}>
-                    {followedVisible ? "Hide" : "Show"}
-                </button> <br />
-                <HashtagList
-                    hashtags={cacheFollowed}
-                    mode={options.followedHighlightMode}
-                    color={options.followedColor} background={options.followedColor} visible={followedVisible} />
             </div>
 
             <h4>LGBT Hashtags</h4>
