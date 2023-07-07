@@ -63,7 +63,7 @@ export function Form() {
                 <input type="text" value={options.trendingBackground} onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} />
             </label><br />
             <div>
-                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshTrending }) }>Refresh</button> <button onClick={() => setTrendingVisible(!trendingVisible)}>{trendingVisible ? "Hide" : "Show"}</button> <br />
+                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_TRENDING }) }>Refresh</button> <button onClick={() => setTrendingVisible(!trendingVisible)}>{trendingVisible ? "Hide" : "Show"}</button> <br />
                 <HashtagList hashtags={cacheTrending} mode={options.trendingHighlightMode} color={options.trendingColor} background={options.trendingBackground} visible={trendingVisible} />
             </div>
 
@@ -85,7 +85,7 @@ export function Form() {
                 <input type="text" value={options.followedBackground} onChange={e => setOptions({ followedBackground: e.currentTarget.value })} />
             </label><br />
             <div>
-                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshFollowing }) }>Refresh</button> <button onClick={() => setFollowedVisible(!followedVisible)}>{followedVisible ? "Hide" : "Show"}</button> <br />
+                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>Refresh</button> <button onClick={() => setFollowedVisible(!followedVisible)}>{followedVisible ? "Hide" : "Show"}</button> <br />
                 <HashtagList hashtags={cacheFollowed} mode={options.followedHighlightMode} color={options.followedColor} background={options.followedColor} visible={followedVisible} />
             </div>
 

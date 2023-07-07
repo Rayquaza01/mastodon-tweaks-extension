@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import browser, { manifest } from "webextension-polyfill";
 import { GetOptions } from "./OptionsInterface";
 import { GetTrendingTags } from "./MastodonAPI";
 import { MessageTypes } from "./BackgroundMessages";
@@ -9,19 +9,11 @@ async function refreshTrending() {
     browser.storage.local.set({ cacheTrending: await GetTrendingTags(instance) });
 }
 
-// run the mastodon script only on the instance that the user specified
-browser.webNavigation.onCompleted.addListener(async (details) => {
-    const { instance } = await GetOptions();
-
-    console.log(details.tabId, details.url, instance);
-
-    if (details.url.includes(instance)) {
-        await browser.tabs.executeScript(details.tabId, { file: "browser-polyfill.min.js" });
-        await browser.tabs.executeScript(details.tabId, { file: "mastodon.bundle.js" });
-    }
-});
-
-browser.runtime.onMessage.addListener(message => {
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log("Got message ", message);
-    if (message.type === MessageTypes.refreshTrending) refreshTrending();
+    if (message.type === MessageTypes.REFRESH_TRENDING) refreshTrending();
+
+    if (message.type === MessageTypes.LOAD_SCRIPT) {
+        if (sender.tab) browser.tabs.executeScript(sender.tab.id, { file: "mastodon.bundle.js" });
+    }
 });

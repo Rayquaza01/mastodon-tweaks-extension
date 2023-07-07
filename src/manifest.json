@@ -17,10 +17,15 @@
   },
   "permissions": [
     "<all_urls>",
-    "tabs",
-    "webNavigation",
+    "activeTab",
     "alarms",
     "storage"
+  ],
+  "content_scripts": [
+    {
+        "js": ["browser-polyfill.min.js", "content.bundle.js"],
+        "matches": ["https://*/*"]
+    }
   ],
   "options_ui": {
     "page": "popup.html",

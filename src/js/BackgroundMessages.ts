@@ -1,8 +1,9 @@
 import browser from "webextension-polyfill";
 
 export enum MessageTypes {
-    refreshTrending,
-    refreshFollowing
+    REFRESH_TRENDING,
+    REFRESH_FOLLOWED,
+    LOAD_SCRIPT
 }
 
 export interface Message {
