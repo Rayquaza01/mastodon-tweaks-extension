@@ -13,6 +13,7 @@ export function HashtagList(props: HashtagListProps) {
     return (
         <div className="hashtagList" style={{ display: props.visible ? undefined : "none" }}>
             { props.hashtags.map(item => <Hashtag tag={item} mode={props.mode} color={props.color} background={props.background} key={item} />) }
+            { props.hashtags.length === 0 && "No hashtags listed" }
         </div>
     );
 }

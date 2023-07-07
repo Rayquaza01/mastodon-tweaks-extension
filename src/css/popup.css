@@ -35,3 +35,11 @@ body {
     cursor: pointer;
     text-decoration: underline;
 }
+
+input:not([type="checkbox"]), select {
+    margin-left: 5px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
