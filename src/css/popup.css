@@ -1,11 +1,27 @@
 :root {
-    margin: 0 10px 10px;
     font-family: sans-serif;
+
+    color: black;
+    background-color: white;
+}
+
+[data-theme="dark"] {
+    color: white;
+    /* mastodon background color */
+    background-color: #282C37;
+}
+
+html, body {
+    margin: 0;
+}
+
+#app > div {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 body {
-    width: 400px;
-    max-width: 400px;
     overflow-x: hidden;
 }
 

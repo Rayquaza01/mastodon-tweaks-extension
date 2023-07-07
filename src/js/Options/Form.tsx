@@ -1,16 +1,23 @@
 import React, { useState } from "react";
+import browser from "webextension-polyfill";
 import { useWebextensionOptions, useWebextensionStorage } from "./webext-hooks";
 import { Select, SelectOptions } from "./Select";
 import { SendMessage, MessageTypes } from "../BackgroundMessages";
 import { HashtagList } from "./HashtagDisplay";
 import { HashtagHighlightMode } from "../OptionsInterface";
+import { useMatchMedia } from "./useMatchMedia";
 
 const TrendingModeOptions: SelectOptions[] = [
     { label: "Color", value: HashtagHighlightMode.COLOR },
     { label: "Background", value: HashtagHighlightMode.BACKGROUND },
-]
+];
+
+const isPopup = browser.extension.getViews({ type: "popup" }).includes(window);
 
 export function Form() {
+    // const theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = useMatchMedia("(prefers-color-scheme: dark)");
+
     const [options, setOptions] = useWebextensionOptions();
     const cacheFollowed = useWebextensionStorage<string[]>("cacheFollowed", []);
     const cacheTrending = useWebextensionStorage<string[]>("cacheTrending", []);
@@ -19,7 +26,10 @@ export function Form() {
     const [followedVisible, setFollowedVisible] = useState(false);
 
     return (
-        <div>
+        <div data-theme={theme ? "dark" : "light"} style={isPopup ? { maxWidth: "400px", width: "400px" } : undefined}>
+            Is popup: {isPopup.toString()}<br />
+            <a href="/popup.html" target="_blank">Open Page In Tab</a>
+
             <h3>Instance Settings</h3>
             <label>
                 Instance
