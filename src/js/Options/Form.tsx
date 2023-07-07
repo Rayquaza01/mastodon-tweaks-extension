@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useWebextensionOptions, useWebextensionStorage } from "./webext-hooks";
-import { Select } from "./Select";
+import { Select, SelectOptions } from "./Select";
 import { SendMessage, MessageTypes } from "../BackgroundMessages";
+import { HashtagList } from "./HashtagDisplay";
+import { HashtagHighlightMode } from "../OptionsInterface";
+
+const TrendingModeOptions: SelectOptions[] = [
+    { label: "Color", value: HashtagHighlightMode.COLOR },
+    { label: "Background", value: HashtagHighlightMode.BACKGROUND },
+]
 
 export function Form() {
     const [options, setOptions] = useWebextensionOptions();
     const cacheFollowed = useWebextensionStorage<string[]>("cacheFollowed", []);
     const cacheTrending = useWebextensionStorage<string[]>("cacheTrending", []);
+
+    const [trendingVisible, setTrendingVisible] = useState(false);
+    const [followedVisible, setFollowedVisible] = useState(false);
 
     return (
         <div>
@@ -33,9 +43,21 @@ export function Form() {
                 <input type="checkbox" checked={options.coloredTrendingHashtags} onChange={e => setOptions({ coloredTrendingHashtags: e.currentTarget.checked })} />
                 Highlight currently trending hashtags
             </label><br />
+            <label>
+                Highlighting mode
+                <Select value={options.trendingHighlightMode} options={TrendingModeOptions} onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+            </label><br />
+            <label>
+                Highlight color
+                <input type="text" value={options.trendingColor} onChange={e => setOptions({ trendingColor: e.currentTarget.value })} />
+            </label><br />
+            <label>
+                Highlight background
+                <input type="text" value={options.trendingBackground} onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} />
+            </label><br />
             <div>
-                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshTrending }) }>Refresh</button> <br />
-                { cacheTrending.map(item => <span key={item}>#{item}</span> )}
+                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshTrending }) }>Refresh</button> <button onClick={() => setTrendingVisible(!trendingVisible)}>{trendingVisible ? "Hide" : "Show"}</button> <br />
+                <HashtagList hashtags={cacheTrending} mode={options.trendingHighlightMode} color={options.trendingColor} background={options.trendingBackground} visible={trendingVisible} />
             </div>
 
             <h4>Followed Hashtags</h4>
@@ -46,7 +68,7 @@ export function Form() {
 
             <h4>LGBT Hashtags</h4>
             <label>
-                <input type="checkbox" checked={options.coloredLGBTHashtags} onChange={e => setOptions({ coloredTrendingHashtags: e.currentTarget.checked })} />
+                <input type="checkbox" checked={options.coloredLGBTHashtags} onChange={e => setOptions({ coloredLGBTHashtags: e.currentTarget.checked })} />
                 Highlight LGBT related hashtags (may reduce visibility)
             </label>
         </div>
