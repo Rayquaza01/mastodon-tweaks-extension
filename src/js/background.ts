@@ -23,7 +23,6 @@ async function createTrendingUpdateAlarm() {
 }
 
 browser.runtime.onMessage.addListener((message, sender) => {
-    console.log("Got message ", message);
     if (message.type === MessageTypes.REFRESH_TRENDING) refreshTrending();
     if (message.type === MessageTypes.REFRESH_FOLLOWED) refreshFollowed();
 
@@ -37,13 +36,12 @@ browser.runtime.onMessage.addListener((message, sender) => {
     }
 });
 
-browser.runtime.onStartup.addListener(() => {
-    refreshTrending();
-    createTrendingUpdateAlarm();
-});
-
 browser.alarms.onAlarm.addListener(alarm => {
     if (alarm.name === TRENDING_UPDATE_INTERVAL_ALARM) {
         refreshTrending();
     }
 });
+
+// refresh trending and set alarm on browser startup
+refreshTrending();
+createTrendingUpdateAlarm();
