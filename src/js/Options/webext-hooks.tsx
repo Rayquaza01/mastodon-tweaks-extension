@@ -36,7 +36,7 @@ export function useWebextensionStorage<T>(key: string, defaultValue: T): T {
 
     useEffect(() => {
         browser.storage.local.get(key).then(res => setVal(res[key] ?? defaultValue));
-    });
+    }, []);
 
     browser.storage.local.onChanged.addListener(changes => {
         if (key in changes) {
