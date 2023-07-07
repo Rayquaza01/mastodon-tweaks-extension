@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --config=webpack.config.prod.js",
     "watch": "webpack --mode=development --config=webpack.config.dev.js --watch",
-    "firefox": "web-ext run -s dist/"
+    "firefox": "web-ext run -s dist/ --devtools"
   },
   "author": "Rayquaza01",
   "license": "MIT",
