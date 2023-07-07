@@ -5,7 +5,6 @@ import { Select, SelectOptions } from "./Select";
 import { SendMessage, MessageTypes } from "../BackgroundMessages";
 import { HashtagList } from "./HashtagDisplay";
 import { HashtagHighlightMode } from "../OptionsInterface";
-import { useMatchMedia } from "./useMatchMedia";
 
 const HighlightModeOptions: SelectOptions[] = [
     { label: "Color", value: HashtagHighlightMode.COLOR },
@@ -15,8 +14,6 @@ const HighlightModeOptions: SelectOptions[] = [
 const isPopup = browser.extension.getViews({ type: "popup" }).includes(window);
 
 export function Form() {
-    // const theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = useMatchMedia("(prefers-color-scheme: dark)");
 
     const [options, setOptions] = useWebextensionOptions();
     const cacheFollowed = useWebextensionStorage<string[]>("cacheFollowed", []);
@@ -26,7 +23,7 @@ export function Form() {
     const [followedVisible, setFollowedVisible] = useState(false);
 
     return (
-        <div data-theme={theme ? "dark" : "light"} style={isPopup ? { maxWidth: "400px", width: "400px" } : undefined}>
+        <div style={isPopup ? { maxWidth: "400px", width: "400px" } : undefined}>
             Is popup: {isPopup.toString()}<br />
             <a href="/popup.html" target="_blank">Open Page In Tab</a>
 

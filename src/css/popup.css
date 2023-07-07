@@ -1,14 +1,19 @@
 :root {
     font-family: sans-serif;
 
+}
+
+body, html {
     color: black;
     background-color: white;
 }
 
-[data-theme="dark"] {
-    color: white;
-    /* mastodon background color */
-    background-color: #282C37;
+@media (prefers-color-scheme: dark) {
+    body, html {
+        color: white;
+        /* mastodon background color */
+        background-color: #282C37;
+    }
 }
 
 html, body {
