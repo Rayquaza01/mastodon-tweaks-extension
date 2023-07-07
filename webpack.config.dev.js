@@ -56,12 +56,14 @@ module.exports = {
                 },
                 { from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js" },
                 { from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map" },
-                { from: "node_modules/react/umd/react.development.js", to: "react.js" }
+                { from: "node_modules/react/umd/react.development.js", to: "react.js" },
+                { from: "node_modules/react-dom/umd/react-dom.development.js", to: "react-dom.js" }
             ]
         })
     ],
     externals: {
         "webextension-polyfill": "browser",
-        "react": "React"
+        "react": "React",
+        "react-dom/client": "ReactDOM"
     }
 }
