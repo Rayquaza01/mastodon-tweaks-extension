@@ -116,7 +116,7 @@ export function Form() {
                     value={options.trendingUpdateInterval}
                     onChange={e => {
                         setOptions({ trendingUpdateInterval: parseInt(e.currentTarget.value) });
-                        browser.runtime.sendMessage(undefined, { type: MessageTypes.UPDATE_TRENDING_UPDATE_INTERVAL });
+                        SendMessage({ type: MessageTypes.UPDATE_TRENDING_UPDATE_INTERVAL });
                     }}
                     placeholder="Udate Interval" />
             </label><br />
