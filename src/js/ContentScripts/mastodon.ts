@@ -1,6 +1,6 @@
-import { AddAltTextEvent } from "./tweaks/alt-text-popup";
-import { ApplyHashtagColors } from "./tweaks/hashtags";
-import { GetCaches, GetOptions, Options, defaultOptions } from "./OptionsInterface";
+import { AddAltTextEvent } from "../tweaks/alt-text-popup";
+import { ApplyHashtagColors } from "../tweaks/hashtags";
+import { GetCaches, GetOptions, Options, defaultOptions } from "../OptionsInterface";
 
 console.log("Mastodon Tweaks");
 
