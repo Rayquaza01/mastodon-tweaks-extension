@@ -7,7 +7,7 @@ import { HashtagList } from "./HashtagDisplay";
 import { HashtagHighlightMode } from "../OptionsInterface";
 import { useMatchMedia } from "./useMatchMedia";
 
-const TrendingModeOptions: SelectOptions[] = [
+const HighlightModeOptions: SelectOptions[] = [
     { label: "Color", value: HashtagHighlightMode.COLOR },
     { label: "Background", value: HashtagHighlightMode.BACKGROUND },
 ];
@@ -55,7 +55,7 @@ export function Form() {
             </label><br />
             <label>
                 Highlighting mode
-                <Select value={options.trendingHighlightMode} options={TrendingModeOptions} onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+                <Select value={options.trendingHighlightMode} options={HighlightModeOptions} onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
             </label><br />
             <label>
                 Highlight color
@@ -73,8 +73,24 @@ export function Form() {
             <h4>Followed Hashtags</h4>
             <label>
                 <input type="checkbox" checked={options.coloredFollowedHashtags} onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
-                Highlight followed hashtags (needs access key)
+                Highlight followed hashtags (needs access key)<br />
             </label>
+            <label>
+                Highlighting mode
+                <Select value={options.followedHighlightMode} options={HighlightModeOptions} onChange={e => setOptions({ followedHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+            </label><br />
+            <label>
+                Highlight color
+                <input type="text" value={options.followedColor} onChange={e => setOptions({ followedColor: e.currentTarget.value })} />
+            </label><br />
+            <label>
+                Highlight background
+                <input type="text" value={options.followedBackground} onChange={e => setOptions({ followedBackground: e.currentTarget.value })} />
+            </label><br />
+            <div>
+                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshFollowing }) }>Refresh</button> <button onClick={() => setFollowedVisible(!followedVisible)}>{followedVisible ? "Hide" : "Show"}</button> <br />
+                <HashtagList hashtags={cacheFollowed} mode={options.followedHighlightMode} color={options.followedColor} background={options.followedColor} visible={followedVisible} />
+            </div>
 
             <h4>LGBT Hashtags</h4>
             <label>
