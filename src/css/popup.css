@@ -1,3 +1,21 @@
 :root {
     margin: 0 10px 10px;
+    font-family: sans-serif;
+}
+
+body {
+    width: 400px;
+    max-width: 400px;
+    overflow-x: hidden;
+}
+
+.hashtagList {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+}
+
+.hashtag:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
