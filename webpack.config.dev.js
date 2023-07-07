@@ -8,8 +8,9 @@ module.exports = {
     entry: {
         background: __dirname + "/src/js/background.ts",
         popup: __dirname + "/src/js/popup.tsx",
-        mastodon: __dirname + "/src/js/mastodon.ts",
-        content: __dirname + "/src/js/content.ts"
+        mastodon: __dirname + "/src/js/ContentScripts/mastodon.ts",
+        content: __dirname + "/src/js/ContentScripts/content.ts",
+        github: __dirname + "/src/js/ContentScripts/github.ts"
     },
     devtool: "source-map",
     output: {
