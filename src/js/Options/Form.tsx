@@ -108,7 +108,7 @@ export function Form() {
                 Highlight currently trending hashtags
             </label><br />
             <label>
-                Update Interval (hours)
+                Update Interval (minutes)
                 <input
                     type="number"
                     min="0"

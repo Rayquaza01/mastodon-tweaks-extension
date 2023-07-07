@@ -40,7 +40,7 @@ export const defaultOptions: Options = {
     trendingColor: "violet",
     trendingBackground: "linear-gradient(45deg, #FF61CE, #7C5CFF)",
     trendingHighlightMode: HashtagHighlightMode.BACKGROUND,
-    trendingUpdateInterval: 6,
+    trendingUpdateInterval: 360,
     coloredLGBTHashtags: true
 };
 

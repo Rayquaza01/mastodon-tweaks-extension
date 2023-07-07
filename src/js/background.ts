@@ -18,7 +18,7 @@ async function refreshFollowed() {
 async function createTrendingUpdateAlarm() {
     const { trendingUpdateInterval } = await GetOptions();
     browser.alarms.create(TRENDING_UPDATE_INTERVAL_ALARM, {
-        periodInMinutes: trendingUpdateInterval * 60
+        periodInMinutes: trendingUpdateInterval
     });
 }
 
@@ -37,7 +37,10 @@ browser.runtime.onMessage.addListener((message, sender) => {
     }
 });
 
-browser.runtime.onStartup.addListener(createTrendingUpdateAlarm);
+browser.runtime.onStartup.addListener(() => {
+    refreshTrending();
+    createTrendingUpdateAlarm();
+});
 
 browser.alarms.onAlarm.addListener(alarm => {
     if (alarm.name === TRENDING_UPDATE_INTERVAL_ALARM) {
