@@ -1,3 +1,4 @@
+import "../css/popup.css";
 import { Form } from "./Options/Form";
 
 import React from "react";
