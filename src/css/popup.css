@@ -20,6 +20,10 @@ html, body {
     margin: 0;
 }
 
+button {
+    margin-left: 5px;
+}
+
 #app > div {
     padding-left: 10px;
     padding-right: 10px;

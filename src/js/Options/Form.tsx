@@ -30,24 +30,38 @@ export function Form() {
             <h3>Instance Settings</h3>
             <label>
                 Instance
-                <input type="url" value={options.instance} onChange={e => setOptions({ instance: e.currentTarget.value })} placeholder="Instance" />
+                <input
+                    type="url"
+                    value={options.instance}
+                    onChange={e => setOptions({ instance: e.currentTarget.value })}
+                    placeholder="Instance" />
             </label><br />
             <label>
                 Access Key
-                <input type="text" value={options.accessKey} onChange={e => setOptions({ accessKey: e.currentTarget.value })} placeholder="Access Key" />
+                <input
+                    type="text"
+                    value={options.accessKey}
+                    onChange={e => setOptions({ accessKey: e.currentTarget.value })}
+                    placeholder="Access Key" />
             </label>
             <p>(Access key is only needed for highlight followed hashtags)</p>
 
             <h3>Alt Text</h3>
             <label>
-                <input type="checkbox" checked={options.addAltTextPopup} onChange={e => setOptions({ addAltTextPopup: e.currentTarget.checked })} />
+                <input
+                    type="checkbox"
+                    checked={options.addAltTextPopup}
+                    onChange={e => setOptions({ addAltTextPopup: e.currentTarget.checked })} />
                 Add alt text popup (Alt + Click to view)
             </label>
 
             <h3>Hashtag Highlighting</h3>
             <h4>Trending Hashtags</h4>
             <label>
-                <input type="checkbox" checked={options.coloredTrendingHashtags} onChange={e => setOptions({ coloredTrendingHashtags: e.currentTarget.checked })} />
+                <input
+                    type="checkbox"
+                    checked={options.coloredTrendingHashtags}
+                    onChange={e => setOptions({ coloredTrendingHashtags: e.currentTarget.checked })} />
                 Highlight currently trending hashtags
             </label><br />
             <label>
@@ -65,41 +79,82 @@ export function Form() {
             </label><br />
             <label>
                 Highlighting mode
-                <Select value={options.trendingHighlightMode} options={HighlightModeOptions} onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+                <Select
+                    value={options.trendingHighlightMode}
+                    options={HighlightModeOptions}
+                    onChange={e => setOptions({ trendingHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
             </label><br />
             <label>
                 Highlight color
-                <input type="text" value={options.trendingColor} onChange={e => setOptions({ trendingColor: e.currentTarget.value })} placeholder="Color" />
+                <input
+                    type="text"
+                    value={options.trendingColor}
+                    onChange={e => setOptions({ trendingColor: e.currentTarget.value })} placeholder="Color" />
             </label><br />
             <label>
                 Highlight background
-                <input type="text" value={options.trendingBackground} onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} placeholder="Background" />
+                <input
+                    type="text"
+                    value={options.trendingBackground}
+                    onChange={e => setOptions({ trendingBackground: e.currentTarget.value })} placeholder="Background" />
             </label><br />
             <div>
-                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_TRENDING }) }>Refresh</button> <button onClick={() => setTrendingVisible(!trendingVisible)}>{trendingVisible ? "Hide" : "Show"}</button> <br />
-                <HashtagList hashtags={cacheTrending} mode={options.trendingHighlightMode} color={options.trendingColor} background={options.trendingBackground} visible={trendingVisible} />
+                Trending Hashtags
+                <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_TRENDING }) }>
+                    Refresh
+                </button>
+                <button onClick={() => setTrendingVisible(!trendingVisible)}>
+                    {trendingVisible ? "Hide" : "Show"}
+                </button><br />
+                <HashtagList
+                    hashtags={cacheTrending}
+                    mode={options.trendingHighlightMode}
+                    color={options.trendingColor}
+                    background={options.trendingBackground}
+                    visible={trendingVisible} />
             </div>
 
             <h4>Followed Hashtags</h4>
             <label>
-                <input type="checkbox" checked={options.coloredFollowedHashtags} onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
+                <input
+                    type="checkbox"
+                    checked={options.coloredFollowedHashtags}
+                    onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
                 Highlight followed hashtags (needs access key)<br />
             </label>
             <label>
                 Highlighting mode
-                <Select value={options.followedHighlightMode} options={HighlightModeOptions} onChange={e => setOptions({ followedHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
+                <Select
+                    value={options.followedHighlightMode}
+                    options={HighlightModeOptions}
+                    onChange={e => setOptions({ followedHighlightMode: e.currentTarget.value as HashtagHighlightMode })} />
             </label><br />
             <label>
                 Highlight color
-                <input type="text" value={options.followedColor} onChange={e => setOptions({ followedColor: e.currentTarget.value })} placeholder="Color" />
+                <input
+                    type="text"
+                    value={options.followedColor}
+                    onChange={e => setOptions({ followedColor: e.currentTarget.value })} placeholder="Color" />
             </label><br />
             <label>
                 Highlight background
-                <input type="text" value={options.followedBackground} onChange={e => setOptions({ followedBackground: e.currentTarget.value })} placeholder="Background" />
+                <input
+                    type="text"
+                    value={options.followedBackground}
+                    onChange={e => setOptions({ followedBackground: e.currentTarget.value })} placeholder="Background" />
             </label><br />
             <div>
-                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>Refresh</button> <button onClick={() => setFollowedVisible(!followedVisible)}>{followedVisible ? "Hide" : "Show"}</button> <br />
-                <HashtagList hashtags={cacheFollowed} mode={options.followedHighlightMode} color={options.followedColor} background={options.followedColor} visible={followedVisible} />
+                Followed Hashtags
+                <button onClick={() => SendMessage({ type: MessageTypes.REFRESH_FOLLOWED }) }>
+                    Refresh
+                </button>
+                <button onClick={() => setFollowedVisible(!followedVisible)}>
+                    {followedVisible ? "Hide" : "Show"}
+                </button> <br />
+                <HashtagList
+                    hashtags={cacheFollowed}
+                    mode={options.followedHighlightMode}
+                    color={options.followedColor} background={options.followedColor} visible={followedVisible} />
             </div>
 
             <h4>LGBT Hashtags</h4>
