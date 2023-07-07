@@ -1,6 +1,7 @@
 import { AddAltTextEvent } from "../tweaks/alt-text-popup";
 import { ApplyHashtagColors } from "../tweaks/hashtags";
 import { GetCaches, GetOptions, Options, defaultOptions } from "../OptionsInterface";
+import { AddCollapsableList } from "../tweaks/collapsable-lists";
 
 console.log("Mastodon Tweaks");
 
@@ -16,6 +17,7 @@ let ready = false;
  */
 function start() {
     // if (options.replacePublishWithToot) {}
+    AddCollapsableList(options);
 
     feedChangeObserver();
 }

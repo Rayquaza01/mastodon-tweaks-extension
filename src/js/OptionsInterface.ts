@@ -14,6 +14,8 @@ export interface Options {
     instance: string
     accessKey: string
     replacePublishWithToot: boolean
+    collapsableLists: boolean
+    listsStartCollapsed: boolean
     addAltTextPopup: boolean
     coloredFollowedHashtags: boolean
     followedColor: string
@@ -31,6 +33,8 @@ export const defaultOptions: Options = {
     instance: "https://mastodon.social",
     accessKey: "",
     replacePublishWithToot: true,
+    collapsableLists: true,
+    listsStartCollapsed: true,
     addAltTextPopup: true,
     coloredFollowedHashtags: false,
     followedColor: "lightgreen",

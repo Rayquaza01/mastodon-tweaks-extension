@@ -55,6 +55,22 @@ export function Form() {
                 Add alt text popup (Alt + Click to view)
             </label>
 
+            <h3>Collapsable Lists</h3>
+            <label>
+                <input
+                    type="checkbox"
+                    checked={options.collapsableLists}
+                    onChange={e => setOptions({ collapsableLists: e.currentTarget.checked })} />
+                Allow lists to be collapsable
+            </label><br />
+            <label>
+                <input
+                    type="checkbox"
+                    checked={options.listsStartCollapsed}
+                    onChange={e => setOptions({ listsStartCollapsed: e.currentTarget.checked })} />
+                Lists start collapsed
+            </label><br />
+
             <h3>Hashtag Highlighting</h3>
             <h4>Followed Hashtags</h4>
             <label>
@@ -62,8 +78,8 @@ export function Form() {
                     type="checkbox"
                     checked={options.coloredFollowedHashtags}
                     onChange={e => setOptions({ coloredFollowedHashtags: e.currentTarget.checked })} />
-                Highlight followed hashtags (needs access key)<br />
-            </label>
+                Highlight followed hashtags (needs access key)
+            </label><br />
             <label>
                 Highlighting mode
                 <Select
