@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production --config=webpack.config.js",
-    "watch": "webpack --mode=development --config=webpack.config.js --watch",
+    "build": "webpack --mode=production --config=webpack.config.prod.js",
+    "watch": "webpack --mode=development --config=webpack.config.dev.js --watch",
     "firefox": "web-ext run -s dist/"
   },
   "author": "Rayquaza01",
@@ -29,7 +29,11 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "@types/webextension-polyfill": "^0.10.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "webextension-polyfill": "^0.10.0"
   }
 }

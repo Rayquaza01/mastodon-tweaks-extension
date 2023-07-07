@@ -23,8 +23,11 @@
     "storage"
   ],
   "options_ui": {
-    "page": "options.html",
+    "page": "popup.html",
     "browser_style": true
+  },
+  "browserAction": {
+    "page": "popup.html"
   },
   "default_locale": "en_US"
 }

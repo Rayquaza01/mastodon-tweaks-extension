@@ -9,7 +9,7 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 module.exports = {
     entry: {
         background: __dirname + "/src/js/background.ts",
-        options: __dirname + "/src/js/options.ts",
+        popup: __dirname + "/src/js/popup.tsx",
         mastodon: __dirname + "/src/js/mastodon.ts"
     },
     devtool: "source-map",
@@ -37,9 +37,9 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtrackPlugin(),
         new HtmlWebpackPlugin({
-            template: "src/options.html",
-            filename: "options.html",
-            chunks: ["options"],
+            template: "src/popup.html",
+            filename: "popup.html",
+            chunks: ["popup"],
         }),
         new copyWebpackPlugin({
             patterns: [
@@ -55,12 +55,14 @@ module.exports = {
                     toType: "dir"
                 },
                 { from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js" },
-                { from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map" }
+                { from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map" },
+                { from: "node_modules/react/umd/react.production.min.js", to: "react.js" }
             ]
         })
     ],
     externals: {
-        "webextension-polyfill": "browser"
+        "webextension-polyfill": "browser",
+        "react": "React"
     },
     optimization: {
         usedExports: true,
