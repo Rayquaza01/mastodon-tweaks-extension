@@ -52,7 +52,16 @@ export function Form() {
             </label><br />
             <label>
                 Update Interval (hours)
-                <input type="number" min="0" step="1" value={options.trendingUpdateInterval} onChange={e => setOptions({ trendingUpdateInterval: parseInt(e.currentTarget.value) }) } placeholder="Udate Interval" />
+                <input
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={options.trendingUpdateInterval}
+                    onChange={e => {
+                        setOptions({ trendingUpdateInterval: parseInt(e.currentTarget.value) });
+                        browser.runtime.sendMessage(undefined, { type: MessageTypes.UPDATE_TRENDING_UPDATE_INTERVAL });
+                    }}
+                    placeholder="Udate Interval" />
             </label><br />
             <label>
                 Highlighting mode

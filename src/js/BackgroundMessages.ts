@@ -3,6 +3,7 @@ import browser from "webextension-polyfill";
 export enum MessageTypes {
     REFRESH_TRENDING,
     REFRESH_FOLLOWED,
+    UPDATE_TRENDING_UPDATE_INTERVAL,
     LOAD_SCRIPT
 }
 
