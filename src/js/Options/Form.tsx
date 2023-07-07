@@ -1,6 +1,7 @@
 import React from "react";
 import { useWebextensionOptions, useWebextensionStorage } from "./webext-hooks";
 import { Select } from "./Select";
+import { SendMessage, MessageTypes } from "../BackgroundMessages";
 
 export function Form() {
     const [options, setOptions] = useWebextensionOptions();
@@ -33,7 +34,7 @@ export function Form() {
                 Highlight currently trending hashtags
             </label><br />
             <div>
-                Trending Hashtags<br />
+                Trending Hashtags <button onClick={() => SendMessage({ type: MessageTypes.refreshTrending }) }>Refresh</button> <br />
                 { cacheTrending.map(item => <span key={item}>#{item}</span> )}
             </div>
 
